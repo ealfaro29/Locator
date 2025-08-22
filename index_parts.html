@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Locator (MapLibre / Full Feature)</title>
+  <link href='https://unpkg.com/maplibre-gl/dist/maplibre-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <!-- RESTORED: Logo -->
+        <img id="logo" src="https://deckard.openprocessing.org/user477727/visual2655711/h97b445f78fd20b46a48ec1e5193357e1/locator_logo.png" alt="Locator Logo">
+      </div>
+
+      <div class="sidebar-section">
+        <label for="locations">Add Locations</label>
+        <textarea id="locations" placeholder="e.g., Paris; London
+Separate with ';' or new line" rows="3"></textarea>
+        <button id="locateBtn" class="primary-button">
+          <span class="btn-text">Add to Map</span>
+          <span class="spinner hidden"></span>
+        </button>
+      </div>
+
+      <div class="sidebar-section scrollable-list">
+        <div class="location-list-header">
+          <h3>Locations</h3>
+          <label class="fill-toggle-label">
+            <input type="checkbox" id="fillCountriesCheckbox" class="fill-toggle-checkbox">
+            Fill Countries
+          </label>
+        </div>
+        <ul id="location-list">
+          <!-- Location items will be added here -->
+        </ul>
+      </div>
+      
+      <!-- Footer is now empty, attribution moved to map -->
+      <div class="sidebar-footer"></div>
+    </aside>
+
+    <main id="map-container">
+      <div id="map"></div>
+      <!-- NEW: Container for controls over the map -->
+      <div id="map-overlay-controls">
+        <a href="#" id="wiki-open-btn" class="wiki-link">[INFO]</a>
+        <div class="attribution-notice">
+          Map data from <a href="https://www.naturalearthdata.com/" target="_blank">Natural Earth</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Ambiguity Popup -->
+  <div id="ambiguity-popup-overlay" class="popup-base" role="dialog">
+    <p id="ambiguity-popup-msg"></p>
+    <select id="ambiguity-popup-select"></select>
+    <div class="actions">
+      <button id="ambiguity-popup-ok">Select</button>
+      <button id="ambiguity-popup-skip">Skip</button>
+    </div>
+  </div>
+
+  <!-- Wiki Sidebar -->
+  <div id="wiki-overlay" class="hidden"></div>
+  <aside id="wiki-sidebar" class="hidden">
+    <div class="wiki-header">
+      <h3 id="wiki-title">Wiki</h3>
+      <button id="wiki-close-btn" title="Close">×</button>
+    </div>
+    <div id="wiki-content">
+      <!-- Wiki content will be loaded here -->
+    </div>
+  </aside>
+
+  <script src='https://unpkg.com/maplibre-gl/dist/maplibre-gl.js'></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
