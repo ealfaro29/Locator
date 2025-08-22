@@ -1,0 +1,40 @@
+{
+  "title": "Locator App Wiki",
+  "sections": [
+    {
+      "title": "Overview",
+      "content": [
+        "Locator is a simple tool for geocoding a list of locations and displaying them on a minimalist world map. It is designed for quick, internal visualization tasks and requires no sign-ups to use."
+      ]
+    },
+    {
+      "title": "How to Use",
+      "content": [
+        "<b>1. Add Locations:</b> Type or paste location names into the text area. Separate each location with a semicolon (;) or a new line.",
+        "<b>2. Add to Map:</b> Click the 'Add to Map' button. The app will process each location one by one.",
+        "<b>3. Resolve Ambiguity:</b> If a location name has multiple possible matches (e.g., 'Springfield'), a popup will appear. Select the correct one from the list and click 'Select', or click 'Skip' to ignore it.",
+        "<b>4. Manage the List:</b> Each successfully added location appears in the list on the left. You can use the buttons to:",
+        "  - ✏️ <b>Rename:</b> Edit the location's label on the map.",
+        "  - 🔍 <b>Zoom To:</b> Pan and zoom the map to that location.",
+        "  - 🗑️ <b>Remove:</b> Delete the location from the map and the list.",
+        "<b>5. Fill Countries:</b> Check the 'Fill Countries' box to highlight the countries where you have placed locations."
+      ]
+    },
+    {
+      "title": "Technical Stack",
+      "content": [
+        "<b>Mapping Library:</b> MapLibre GL JS",
+        "<b>User Interface:</b> Vanilla JavaScript (ES6), HTML5, CSS3",
+        "<b>Dependencies:</b> All dependencies are loaded via CDN and require no local installation."
+      ]
+    },
+    {
+      "title": "Data Sources",
+      "content": [
+        "<b>Base Map:</b> Country outlines are from <a href='https://www.naturalearthdata.com/' target='_blank'>Natural Earth</a> (Public Domain).",
+        "<b>Geocoding (Search):</b> Location search is performed using the public <a href='https://nominatim.org/' target='_blank'>Nominatim API</a>, which uses OpenStreetMap data.",
+        "<b>Compliance:</b> To respect Nominatim's usage policy, this tool sends a unique <code>User-Agent</code> header and enforces a 1-second delay between search requests."
+      ]
+    }
+  ]
+}
