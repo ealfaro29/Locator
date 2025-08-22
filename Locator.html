@@ -150,9 +150,9 @@ Separate with ';' or new line" rows="3"></textarea>
     <main id="map-container">
       <div id="map"></div>
       <div id="map-overlay-controls">
-        <a href="#" id="wiki-open-btn" class="wiki-link">[+INFO]</a>
+        <a href="#" id="wiki-open-btn" class="wiki-link">[INFO]</a>
         <div class="attribution-notice">
-          <a href="https://www.naturalearthdata.com/" target="_blank">Map data</a>
+          Map data from <a href="https://www.naturalearthdata.com/" target="_blank">Natural Earth</a>
         </div>
       </div>
     </main>
@@ -187,46 +187,14 @@ Separate with ';' or new line" rows="3"></textarea>
     const WIKI_DATA = {
       "title": "Locator App Wiki",
       "sections": [
-        {
-          "title": "Overview",
-          "content": [
-            "Locator is a simple tool for geocoding a list of locations and displaying them on a minimalist world map. It is designed for quick, internal visualization tasks and requires no sign-ups to use."
-          ]
-        },
-        {
-          "title": "How to Use",
-          "content": [
-            "<b>1. Add Locations:</b> Type or paste location names into the text area. Separate each location with a semicolon (;) or a new line.",
-            "<b>2. Add to Map:</b> Click the 'Add to Map' button. The app will process each location one by one.",
-            "<b>3. Resolve Ambiguity:</b> If a location name has multiple possible matches (e.g., 'Springfield'), a popup will appear. Select the correct one from the list and click 'Select', or click 'Skip' to ignore it.",
-            "<b>4. Manage the List:</b> Each successfully added location appears in the list on the left. You can use the buttons to:",
-            "  - ✏️ <b>Rename:</b> Edit the location's label on the map.",
-            "  - 🔍 <b>Zoom To:</b> Pan and zoom the map to that location.",
-            "  - 🗑️ <b>Remove:</b> Delete the location from the map and the list.",
-            "<b>5. Fill Countries:</b> Check the 'Fill Countries' box to highlight the countries where you have placed locations."
-          ]
-        },
-        {
-          "title": "Technical Stack",
-          "content": [
-            "<b>Mapping Library:</b> MapLibre GL JS",
-            "<b>User Interface:</b> Vanilla JavaScript (ES6), HTML5, CSS3",
-            "<b>Dependencies:</b> All dependencies are loaded via CDN and require no local installation."
-          ]
-        },
-        {
-          "title": "Data Sources",
-          "content": [
-            "<b>Base Map:</b> Country outlines are from <a href='https://www.naturalearthdata.com/' target='_blank'>Natural Earth</a> (Public Domain).",
-            "<b>Geocoding (Search):</b> Location search is performed using the public <a href='https://nominatim.org/' target='_blank'>Nominatim API</a>, which uses OpenStreetMap data.",
-          ]
-        }
+        { "title": "Overview", "content": ["Locator is a simple tool for geocoding a list of locations and displaying them on a minimalist world map. It is designed for quick, internal visualization tasks and requires no sign-ups to use."] },
+        { "title": "How to Use", "content": ["<b>1. Add Locations:</b> Type or paste location names into the text area. Separate each location with a semicolon (;) or a new line.", "<b>2. Add to Map:</b> Click the 'Add to Map' button. The app will process each location one by one.", "<b>3. Resolve Ambiguity:</b> If a location name has multiple possible matches (e.g., 'Springfield'), a popup will appear. Select the correct one from the list and click 'Select', or click 'Skip' to ignore it.", "<b>4. Manage the List:</b> Each successfully added location appears in the list on the left. You can use the buttons to:", "  - ✏️ <b>Rename:</b> Edit the location's label on the map.", "  - 🔍 <b>Zoom To:</b> Pan and zoom the map to that location.", "  - 🗑️ <b>Remove:</b> Delete the location from the map and the list.", "<b>5. Fill Countries:</b> Check the 'Fill Countries' box to highlight the countries where you have placed locations."] },
+        { "title": "Technical Stack", "content": ["<b>Mapping Library:</b> MapLibre GL JS", "<b>User Interface:</b> Vanilla JavaScript (ES6), HTML5, CSS3", "<b>Dependencies:</b> All dependencies are loaded via CDN and require no local installation."] },
+        { "title": "Data Sources", "content": ["<b>Base Map:</b> Country outlines are from <a href='https://www.naturalearthdata.com/' target='_blank'>Natural Earth</a> (Public Domain).", "<b>Geocoding (Search):</b> Location search is performed using the public <a href='https://nominatim.org/' target='_blank'>Nominatim API</a>, which uses OpenStreetMap data.", "<b>Compliance:</b> To respect Nominatim's usage policy, this tool sends a unique <code>User-Agent</code> header and enforces a 1-second delay between search requests."] }
       ]
     };
 
-    const ISO_A2_TO_A3_DATA = {
-        "AF": "AFG", "AX": "ALA", "AL": "ALB", "DZ": "DZA", "AS": "ASM", "AD": "AND", "AO": "AGO", "AI": "AIA", "AQ": "ATA", "AG": "ATG", "AR": "ARG", "AM": "ARM", "AW": "ABW", "AU": "AUS", "AT": "AUT", "AZ": "AZE", "BS": "BHS", "BH": "BHR", "BD": "BGD", "BB": "BRB", "BY": "BLR", "BE": "BEL", "BZ": "BLZ", "BJ": "BEN", "BM": "BMU", "BT": "BTN", "BO": "BOL", "BQ": "BES", "BA": "BIH", "BW": "BWA", "BV": "BVT", "BR": "BRA", "IO": "IOT", "BN": "BRN", "BG": "BGR", "BF": "BFA", "BI": "BDI", "CV": "CPV", "KH": "KHM", "CM": "CMR", "CA": "CAN", "KY": "CYM", "CF": "CAF", "TD": "TCD", "CL": "CHL", "CN": "CHN", "CX": "CXR", "CC": "CCK", "CO": "COL", "KM": "COM", "CD": "COD", "CG": "COG", "CK": "COK", "CR": "CRI", "CI": "CIV", "HR": "HRV", "CU": "CUB", "CW": "CUW", "CY": "CYP", "CZ": "CZE", "DK": "DNK", "DJ": "DJI", "DM": "DMA", "DO": "DOM", "EC": "ECU", "EG": "EGY", "SV": "SLV", "GQ": "GNQ", "ER": "ERI", "EE": "EST", "SZ": "SWZ", "ET": "ETH", "FK": "FLK", "FO": "FRO", "FJ": "FJI", "FI": "FIN", "FR": "FRA", "GF": "GUF", "PF": "PYF", "TF": "ATF", "GA": "GAB", "GM": "GMB", "GE": "GEO", "DE": "DEU", "GH": "GHA", "GI": "GIB", "GR": "GRC", "GL": "GRL", "GD": "GRD", "GP": "GLP", "GU": "GUM", "GT": "GTM", "GG": "GGY", "GN": "GIN", "GW": "GNB", "GY": "GUY", "HT": "HTI", "HM": "HMD", "VA": "VAT", "HN": "HND", "HK": "HKG", "HU": "HUN", "IS": "ISL", "IN": "IND", "ID": "IDN", "IR": "IRN", "IQ": "IRQ", "IE": "IRL", "IM": "IMN", "IL": "ISR", "IT": "ITA", "JM": "JAM", "JP": "JPN", "JE": "JEY", "JO": "JOR", "KZ": "KAZ", "KE": "KEN", "KI": "KIR", "KP": "PRK", "KR": "KOR", "KW": "KWT", "KG": "KGZ", "LA": "LAO", "LV": "LVA", "LB": "LBN", "LS": "LSO", "LR": "LBR", "LY": "LBY", "LI": "LIE", "LT": "LTU", "LU": "LUX", "MO": "MAC", "MG": "MDG", "MW": "MWI", "MY": "MYS", "MV": "MDV", "ML": "MLI", "MT": "MLT", "MH": "MHL", "MQ": "MTQ", "MR": "MRT", "MU": "MUS", "YT": "MYT", "MX": "MEX", "FM": "FSM", "MD": "MDA", "MC": "MCO", "MN": "MNG", "ME": "MNE", "MS": "MSR", "MA": "MAR", "MZ": "MOZ", "MM": "MMR", "NA": "NAM", "NR": "NRU", "NP": "NPL", "NL": "NLD", "NC": "NCL", "NZ": "NZL", "NI": "NIC", "NE": "NER", "NG": "NGA", "NU": "NIU", "NF": "NFK", "MK": "MKD", "MP": "MNP", "NO": "NOR", "OM": "OMN", "PK": "PAK", "PW": "PLW", "PS": "PSE", "PA": "PAN", "PG": "PNG", "PY": "PRY", "PE": "PER", "PH": "PHL", "PN": "PCN", "PL": "POL", "PT": "PRT", "PR": "PRI", "QA": "QAT", "RE": "REU", "RO": "ROU", "RU": "RUS", "RW": "RWA", "BL": "BLM", "SH": "SHN", "KN": "KNA", "LC": "LCA", "MF": "MAF", "PM": "SPM", "VC": "VCT", "WS": "WSM", "SM": "SMR", "ST": "STP", "SA": "SAU", "SN": "SEN", "RS": "SRB", "SC": "SYC", "SL": "SLE", "SG": "SGP", "SX": "SXM", "SK": "SVK", "SI": "SVN", "SB": "SLB", "SO": "SOM", "ZA": "ZAF", "GS": "SGS", "SS": "SSD", "ES": "ESP", "LK": "LKA", "SD": "SDN", "SR": "SUR", "SJ": "SJM", "SE": "SWE", "CH": "CHE", "SY": "SYR", "TW": "TWN", "TJ": "TJK", "TZ": "TZA", "TH": "THA", "TL": "TLS", "TG": "TGO", "TK": "TKL", "TO": "TON", "TT": "TTO", "TN": "TUN", "TR": "TUR", "TM": "TKM", "TC": "TCA", "TV": "TUV", "UG": "UGA", "UA": "UKR", "AE": "ARE", "GB": "GBR", "UM": "UMI", "US": "USA", "UY": "URY", "UZ": "UZB", "VU": "VUT", "VE": "VEN", "VN": "VNM", "VG": "VGB", "VI": "VIR", "WF": "WLF", "EH": "ESH", "YE": "YEM", "ZM": "ZMB", "ZW": "ZWE"
-    };
+    const ISO_A2_TO_A3_DATA = { "AF": "AFG", "AX": "ALA", "AL": "ALB", "DZ": "DZA", "AS": "ASM", "AD": "AND", "AO": "AGO", "AI": "AIA", "AQ": "ATA", "AG": "ATG", "AR": "ARG", "AM": "ARM", "AW": "ABW", "AU": "AUS", "AT": "AUT", "AZ": "AZE", "BS": "BHS", "BH": "BHR", "BD": "BGD", "BB": "BRB", "BY": "BLR", "BE": "BEL", "BZ": "BLZ", "BJ": "BEN", "BM": "BMU", "BT": "BTN", "BO": "BOL", "BQ": "BES", "BA": "BIH", "BW": "BWA", "BV": "BVT", "BR": "BRA", "IO": "IOT", "BN": "BRN", "BG": "BGR", "BF": "BFA", "BI": "BDI", "CV": "CPV", "KH": "KHM", "CM": "CMR", "CA": "CAN", "KY": "CYM", "CF": "CAF", "TD": "TCD", "CL": "CHL", "CN": "CHN", "CX": "CXR", "CC": "CCK", "CO": "COL", "KM": "COM", "CD": "COD", "CG": "COG", "CK": "COK", "CR": "CRI", "CI": "CIV", "HR": "HRV", "CU": "CUB", "CW": "CUW", "CY": "CYP", "CZ": "CZE", "DK": "DNK", "DJ": "DJI", "DM": "DMA", "DO": "DOM", "EC": "ECU", "EG": "EGY", "SV": "SLV", "GQ": "GNQ", "ER": "ERI", "EE": "EST", "SZ": "SWZ", "ET": "ETH", "FK": "FLK", "FO": "FRO", "FJ": "FJI", "FI": "FIN", "FR": "FRA", "GF": "GUF", "PF": "PYF", "TF": "ATF", "GA": "GAB", "GM": "GMB", "GE": "GEO", "DE": "DEU", "GH": "GHA", "GI": "GIB", "GR": "GRC", "GL": "GRL", "GD": "GRD", "GP": "GLP", "GU": "GUM", "GT": "GTM", "GG": "GGY", "GN": "GIN", "GW": "GNB", "GY": "GUY", "HT": "HTI", "HM": "HMD", "VA": "VAT", "HN": "HND", "HK": "HKG", "HU": "HUN", "IS": "ISL", "IN": "IND", "ID": "IDN", "IR": "IRN", "IQ": "IRQ", "IE": "IRL", "IM": "IMN", "IL": "ISR", "IT": "ITA", "JM": "JAM", "JP": "JPN", "JE": "JEY", "JO": "JOR", "KZ": "KAZ", "KE": "KEN", "KI": "KIR", "KP": "PRK", "KR": "KOR", "KW": "KWT", "KG": "KGZ", "LA": "LAO", "LV": "LVA", "LB": "LBN", "LS": "LSO", "LR": "LBR", "LY": "LBY", "LI": "LIE", "LT": "LTU", "LU": "LUX", "MO": "MAC", "MG": "MDG", "MW": "MWI", "MY": "MYS", "MV": "MDV", "ML": "MLI", "MT": "MLT", "MH": "MHL", "MQ": "MTQ", "MR": "MRT", "MU": "MUS", "YT": "MYT", "MX": "MEX", "FM": "FSM", "MD": "MDA", "MC": "MCO", "MN": "MNG", "ME": "MNE", "MS": "MSR", "MA": "MAR", "MZ": "MOZ", "MM": "MMR", "NA": "NAM", "NR": "NRU", "NP": "NPL", "NL": "NLD", "NC": "NCL", "NZ": "NZL", "NI": "NIC", "NE": "NER", "NG": "NGA", "NU": "NIU", "NF": "NFK", "MK": "MKD", "MP": "MNP", "NO": "NOR", "OM": "OMN", "PK": "PAK", "PW": "PLW", "PS": "PSE", "PA": "PAN", "PG": "PNG", "PY": "PRY", "PE": "PER", "PH": "PHL", "PN": "PCN", "PL": "POL", "PT": "PRT", "PR": "PRI", "QA": "QAT", "RE": "REU", "RO": "ROU", "RU": "RUS", "RW": "RWA", "BL": "BLM", "SH": "SHN", "KN": "KNA", "LC": "LCA", "MF": "MAF", "PM": "SPM", "VC": "VCT", "WS": "WSM", "SM": "SMR", "ST": "STP", "SA": "SAU", "SN": "SEN", "RS": "SRB", "SC": "SYC", "SL": "SLE", "SG": "SGP", "SX": "SXM", "SK": "SVK", "SI": "SVN", "SB": "SLB", "SO": "SOM", "ZA": "ZAF", "GS": "SGS", "SS": "SSD", "ES": "ESP", "LK": "LKA", "SD": "SDN", "SR": "SUR", "SJ": "SJM", "SE": "SWE", "CH": "CHE", "SY": "SYR", "TW": "TWN", "TJ": "TJK", "TZ": "TZA", "TH": "THA", "TL": "TLS", "TG": "TGO", "TK": "TKL", "TO": "TON", "TT": "TTO", "TN": "TUN", "TR": "TUR", "TM": "TKM", "TC": "TCA", "TV": "TUV", "UG": "UGA", "UA": "UKR", "AE": "ARE", "GB": "GBR", "UM": "UMI", "US": "USA", "UY": "URY", "UZ": "UZB", "VU": "VUT", "VE": "VEN", "VN": "VNM", "VG": "VGB", "VI": "VIR", "WF": "WLF", "EH": "ESH", "YE": "YEM", "ZM": "ZMB", "ZW": "ZWE" };
 
     // --- MAIN APPLICATION LOGIC ---
     const App = {
@@ -234,59 +202,27 @@ Separate with ';' or new line" rows="3"></textarea>
             API_THROTTLE_MS: 1000,
             GEOJSON_URL: 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson'
         },
-
-        map: null,
-        locationsData: [],
-        geocodeQueue: [],
-        ambiguityChoices: [],
-        ambiguityOriginalQuery: '',
-        locatedCountryCodes: new Set(),
-        isWikiLoaded: false,
-        isoLookup: null,
-
-        elements: {},
-        cssColors: {},
+        map: null, locationsData: [], geocodeQueue: [], ambiguityChoices: [], ambiguityOriginalQuery: '', locatedCountryCodes: new Set(), isWikiLoaded: false, isoLookup: null, elements: {}, cssColors: {},
 
         init() {
             this.cacheDOMElementsAndStyles();
-            this.loadISOLookup(); // Now synchronous
+            this.loadEmbeddedData();
             this.initMap();
             this.bindEvents();
         },
 
         cacheDOMElementsAndStyles() {
             this.elements = {
-                locateBtn: document.getElementById('locateBtn'),
-                locationsInput: document.getElementById('locations'),
-                locationList: document.getElementById('location-list'),
-                mapElement: document.getElementById('map'),
-                fillCountriesCheckbox: document.getElementById('fillCountriesCheckbox'),
-                locateBtnSpinner: document.querySelector('#locateBtn .spinner'),
-                locateBtnText: document.querySelector('#locateBtn .btn-text'),
-                ambiguityPopup: document.getElementById('ambiguity-popup-overlay'),
-                ambiguityMsg: document.getElementById('ambiguity-popup-msg'),
-                ambiguitySelect: document.getElementById('ambiguity-popup-select'),
-                ambiguityOkBtn: document.getElementById('ambiguity-popup-ok'),
-                ambiguitySkipBtn: document.getElementById('ambiguity-popup-skip'),
-                wikiOpenBtn: document.getElementById('wiki-open-btn'),
-                wikiSidebar: document.getElementById('wiki-sidebar'),
-                wikiOverlay: document.getElementById('wiki-overlay'),
-                wikiCloseBtn: document.getElementById('wiki-close-btn'),
-                wikiTitle: document.getElementById('wiki-title'),
-                wikiContent: document.getElementById('wiki-content'),
+                locateBtn: document.getElementById('locateBtn'), locationsInput: document.getElementById('locations'), locationList: document.getElementById('location-list'), mapElement: document.getElementById('map'), fillCountriesCheckbox: document.getElementById('fillCountriesCheckbox'), locateBtnSpinner: document.querySelector('#locateBtn .spinner'), locateBtnText: document.querySelector('#locateBtn .btn-text'), ambiguityPopup: document.getElementById('ambiguity-popup-overlay'), ambiguityMsg: document.getElementById('ambiguity-popup-msg'), ambiguitySelect: document.getElementById('ambiguity-popup-select'), ambiguityOkBtn: document.getElementById('ambiguity-popup-ok'), ambiguitySkipBtn: document.getElementById('ambiguity-popup-skip'), wikiOpenBtn: document.getElementById('wiki-open-btn'), wikiSidebar: document.getElementById('wiki-sidebar'), wikiOverlay: document.getElementById('wiki-overlay'), wikiCloseBtn: document.getElementById('wiki-close-btn'), wikiTitle: document.getElementById('wiki-title'), wikiContent: document.getElementById('wiki-content'),
             };
             const rootStyle = getComputedStyle(document.documentElement);
-            this.cssColors = {
-                land: rootStyle.getPropertyValue('--land-fill').trim(),
-                accent: rootStyle.getPropertyValue('--accent').trim()
-            };
+            this.cssColors = { land: rootStyle.getPropertyValue('--land-fill').trim(), accent: rootStyle.getPropertyValue('--accent').trim() };
         },
         
-        loadISOLookup() {
-            try {
-                this.isoLookup = ISO_A2_TO_A3_DATA;
-            } catch (error) {
-                console.error('Fatal Error: Could not load ISO country code lookup. Fill Countries feature will be disabled.', error);
+        loadEmbeddedData() {
+            this.isoLookup = ISO_A2_TO_A3_DATA;
+            if (!this.isoLookup) {
+                console.error('Fatal Error: Could not load ISO country code lookup. Fill Countries feature will be disabled.');
                 this.elements.fillCountriesCheckbox.disabled = true;
                 const label = this.elements.fillCountriesCheckbox.closest('label');
                 if (label) {
@@ -299,11 +235,7 @@ Separate with ';' or new line" rows="3"></textarea>
 
         initMap() {
             this.map = new maplibregl.Map({
-                container: this.elements.mapElement,
-                style: { version: 8, sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#ddeeff' } }] },
-                center: [0, 20],
-                zoom: 1.5,
-                attributionControl: false
+                container: this.elements.mapElement, style: { version: 8, sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#ddeeff' } }] }, center: [0, 20], zoom: 1.5, attributionControl: false
             });
             this.map.on('load', () => {
                 this.map.addSource('countries-source', { type: 'geojson', data: this.CONFIG.GEOJSON_URL });
@@ -451,23 +383,13 @@ Separate with ';' or new line" rows="3"></textarea>
 
         recalculateLocatedCountries() {
             this.locatedCountryCodes.clear();
-            this.locationsData.forEach(loc => {
-                if (loc.countryCode) this.locatedCountryCodes.add(loc.countryCode);
-            });
+            this.locationsData.forEach(loc => { if (loc.countryCode) this.locatedCountryCodes.add(loc.countryCode); });
         },
 
         renderListItem(data) {
             const li = document.createElement('li');
             li.dataset.markerId = data.id;
-            li.innerHTML = `
-                <span class="location-name">${data.label}</span>
-                <input type="text" class="location-edit-input" value="${data.label}" />
-                <div class="location-controls">
-                    <button class="rename-btn" title="Rename">✏️</button>
-                    <button class="zoom-btn" title="Zoom To">🔍</button>
-                    <button class="remove-btn" title="Remove">🗑️</button>
-                </div>
-            `;
+            li.innerHTML = ` <span class="location-name">${data.label}</span> <input type="text" class="location-edit-input" value="${data.label}" /> <div class="location-controls"> <button class="rename-btn" title="Rename">✏️</button> <button class="zoom-btn" title="Zoom To">🔍</button> <button class="remove-btn" title="Remove">🗑️</button> </div> `;
             this.elements.locationList.prepend(li);
         },
 
@@ -476,12 +398,7 @@ Separate with ';' or new line" rows="3"></textarea>
             li.classList.add('not-found');
             li.dataset.query = query;
             const message = isError ? 'Error searching' : 'Not found';
-            li.innerHTML = `
-                <span class="location-name">"${query}" - ${message}</span>
-                <div class="location-controls">
-                    <button class="remove-btn" title="Remove">🗑️</button>
-                </div>
-            `;
+            li.innerHTML = ` <span class="location-name">"${query}" - ${message}</span> <div class="location-controls"> <button class="remove-btn" title="Remove">🗑️</button> </div> `;
             this.elements.locationList.prepend(li);
         },
         
@@ -517,12 +434,8 @@ Separate with ';' or new line" rows="3"></textarea>
                 const results = await this.geocode(locationName);
                 const seenDisplayNames = new Set();
                 const uniqueResults = results.filter(result => {
-                    if (seenDisplayNames.has(result.display_name)) {
-                        return false;
-                    } else {
-                        seenDisplayNames.add(result.display_name);
-                        return true;
-                    }
+                    if (seenDisplayNames.has(result.display_name)) { return false; } 
+                    else { seenDisplayNames.add(result.display_name); return true; }
                 });
                 if (uniqueResults.length === 0) {
                     this.renderUnfoundListItem(locationName);
@@ -550,8 +463,7 @@ Separate with ';' or new line" rows="3"></textarea>
         },
 
         showAmbiguityPopup(options, originalQuery) {
-            this.ambiguityChoices = options;
-            this.ambiguityOriginalQuery = originalQuery;
+            this.ambiguityChoices = options; this.ambiguityOriginalQuery = originalQuery;
             this.elements.ambiguityMsg.textContent = `Multiple matches for "${originalQuery}":`;
             this.elements.ambiguitySelect.innerHTML = '';
             options.slice(0, 5).forEach((o, i) => this.elements.ambiguitySelect.add(new Option(o.display_name, String(i))));
@@ -565,14 +477,12 @@ Separate with ';' or new line" rows="3"></textarea>
             if (this.ambiguityChoices[selectedIndex]) {
                 this.placeLocation(this.ambiguityChoices[selectedIndex], this.ambiguityOriginalQuery);
             }
-            this.hideAmbiguityPopup();
-            this.processNextInGeocodeQueue();
+            this.hideAmbiguityPopup(); this.processNextInGeocodeQueue();
         },
 
         skipAmbiguity() {
             this.renderUnfoundListItem(this.ambiguityOriginalQuery);
-            this.hideAmbiguityPopup();
-            this.processNextInGeocodeQueue();
+            this.hideAmbiguityPopup(); this.processNextInGeocodeQueue();
         }
     };
 

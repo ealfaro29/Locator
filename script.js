@@ -270,12 +270,21 @@ const App = {
     },
     
     async geocode(query) {
-        const myAppUserAgent = 'Internal-LocatorTool/4.4-DataSplit (Internal Use; sporadic)';
-        const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`;
-        const response = await fetch(url, { headers: { 'User-Agent': myAppUserAgent } });
-        if (!response.ok) throw new Error(`Geocoding error (${response.status})`);
-        return response.json();
-    },
+    // A descriptive User-Agent is required by Nominatim's policy.
+    // Replace with your app name/URL/email if you have one.
+    const myAppUserAgent = 'Internal-LocatorTool/4.4-DataSplit (Internal Use; sporadic)';
+    const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=5&q=${encodeURIComponent(query)}`;
+    
+    // Add the headers object to your fetch call
+    const response = await fetch(url, {
+        headers: {
+            'User-Agent': myAppUserAgent
+        }
+    });
+
+    if (!response.ok) throw new Error(`Geocoding error (${response.status})`);
+    return response.json();
+},
 
     startGeocoding() {
         const value = this.elements.locationsInput.value;
